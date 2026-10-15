@@ -1,7 +1,7 @@
 # OS Lab 1 Submission
 
-- **Student Name:** [Your Name Here]
-- **Student ID:** [Your Student ID Here]
+- **Student Name:** KHORN VICTOR
+- **Student ID:** e20230078
 
 ---
 
@@ -11,7 +11,9 @@ Briefly describe what you observed about your OS and Kernel here.
 
 <!-- Insert your screenshot for Task 1 below: -->
 <!-- SCREENSHOT REQUIREMENT: Show the terminal after running uname -a and lsb_release -a, or the contents of your task1_os_info.txt file. -->
+
 ![alt text](../lab1/pictures/image.png)
+
 ---
 
 ## Task 2: Essential Linux File and Directory Commands
