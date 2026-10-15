@@ -269,8 +269,6 @@ flowchart TD
     KernelSpace -->|"Controls & mediates physical resources"| HardwareLayer
 ```
 
-![OS Layers Diagram](screenshots/task4_os_layers_diagram.png)
-
 ### Questions
 
 1. **What is `/proc`? Is it a real filesystem on disk?**
