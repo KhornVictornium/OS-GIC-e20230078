@@ -1,0 +1,13 @@
+/home/gic-khorn-victor/os-se-e20230078/os-lab-e20230078/lab1/task2_files
+a.txt
+b.txt
+This is file A
+This is file B
+a.txt
+a_copy.txt
+b.txt
+a.txt
+a_copy.txt
+b_renamed.txt
+a.txt
+b_renamed.txt
