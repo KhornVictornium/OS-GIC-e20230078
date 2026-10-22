@@ -1,8 +1,8 @@
 # Class Activity 2 — Processes & Inter-Process Communication
 
-- **Student Name:** [Your Name Here]
-- **Student ID:** [Your Student ID Here]
-- **Date:** [Date of Submission]
+- **Student Name:** KHORN VICTOR
+- **Student ID:** e20230078
+- **Date:** 23/10/2026
 
 ---
 
@@ -22,31 +22,50 @@ Screenshot of the parent-child process tree (using `ps --forest`, `pstree`, or `
 
 ### Output
 
-```
-[Paste the content of result_forkchild.txt here]
+```bash
+Parent process (PID: 5835) — creating child...
+Parent: waiting for child (PID: 5836) to finish...
+Child process (PID: 5836, Parent PID: 5835)
+Child: sleeping 30s — observe the process tree now!
+Child: now executing 'ls -la'...
+total 40
+drwxrwxr-x 2 victor victor  4096 Oct 22 13:04 .
+drwxrwxr-x 4 victor victor  4096 Oct 22 12:44 ..
+-rwxrwxr-x 1 victor victor 16480 Oct 22 13:03 forkchild
+-rw-rw-r-- 1 victor victor  4841 Oct 22 13:02 forkchild.c
+-rw-rw-r-- 1 victor victor   231 Oct 22 13:04 result_forkchild.txt
+Parent: child exited with status 0
+Parent: done.
 ```
 
 ### Questions
 
 1. **What does `fork()` return to the parent? What does it return to the child?**
 
-   > [Your answer]
+   > The fork() function creates a new child process. It returns the child's PID (a positive integer) to the parent process, 0 to the child process, and -1 if the process creation fails.
 
 2. **What happens if you remove the `waitpid()` call? Why might the output look different?**
 
-   > [Your answer]
+   > If we remove waitpid(), the parent process does not wait for the child to finish. The parent may terminate before the child completes its execution, so the output order may be different. If the child finishes while the parent is still running, it may temporarily become a zombie process until its exit status is collected.
 
 3. **What does `execlp()` do? Why don't we see "execlp failed" when it succeeds?**
 
-   > [Your answer]
+   > The execlp() function replaces the current process program with a new program. In this task, it replaces the child process program with ls -la, which lists files and directories in detail. When execlp() succeeds, it does not return to the original program, so the error message is not printed. If it fails, it returns -1, and perror() displays the error.
 
 4. **Draw the process tree for your program (parent → child). Include PIDs from your output.**
 
-   > [Your answer / diagram]
+   > The process tree shows that the parent process creates a child process using fork(). The child's PPID matches the parent's PID. After 30 seconds, the child executes ls -la but keeps the same PID.
+
+   ```text
+   forkchild (Parent PID: 12345)
+   └── forkchild (Child PID: 12346)
+   ```
+
+   > Important: 12345 and 12346 are example PIDs. Replace them with your actual PIDs. During the 30-second sleep, both processes appear as forkchild. After execlp() succeeds, the child appears as ls instead.
 
 5. **Which command did you use to view the process tree (`ps --forest`, `pstree`, or `htop`)? What information does each column show?**
 
-   > [Your answer]
+   > I used the command ps -ef --forest | grep -E 'forkchild|PID' to view the parent-child process relationship. The forest view uses indentation to show which process is the parent and which is the child.
 
 ---
 
