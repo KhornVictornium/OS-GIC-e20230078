@@ -91,23 +91,23 @@ Screenshot showing PID and Parent PID in the **Details** tab:
 
 1. **What is the key difference between how Linux creates a process (`fork` + `exec`) and how Windows does it (`CreateProcess`)?**
 
-   > [Your answer]
+   > Linux separates process creation into two distinct phases: fork() clones the calling parent process to create an identical child with a duplicated address space and descriptor table, and exec() subsequently wipes and replaces that address space with a new executable image. In contrast, Windows combines this entire workflow into a single API call, CreateProcess(). It directly instantiates a fresh address space, loads the target binary from disk, initializes the primary thread, and begins execution without cloning the parent.
 
 2. **What does `WaitForSingleObject()` do? What is its Linux equivalent?**
 
-   > [Your answer]
+   > WaitForSingleObject() pauses execution of the calling parent thread until the specified kernel object—in this case, the child process handle—enters a signaled state, which happens automatically when the child terminates. Its direct Linux equivalent is the wait() or waitpid() system call.
 
 3. **Why do we need to call `CloseHandle()` at the end? What happens if we don't?**
 
-   > [Your answer]
+   > When CreateProcess() succeeds, the operating system creates kernel objects for the process and its primary thread and returns open handles to them, which increments their reference counts. Calling CloseHandle() releases the parent's reference to these kernel structures. If you don't call it, the kernel cannot free the underlying bookkeeping structures (such as process exit codes and accounting blocks) even after the child process has finished running, causing a kernel resource leak until the parent process itself exits.
 
 4. **In Task Manager, what was the PID of your parent program and the PID of mspaint? Do they match your program's output?**
 
-   > [Your answer]
+   > In my run, the parent process (winprocess.exe) had a PID of 21280, and the child process (mspaint.exe) had a PID of [insert your child PID, e.g., 14824]. These values match the program's console output (GetCurrentProcessId() and pi.dwProcessId) as well as the PID and Parent PID (PPID) columns shown in Task Manager.
 
 5. **Compare the Processes tab (tree view) and the Details tab (PID/PPID columns). Which view makes it easier to understand the parent-child relationship? Why?**
 
-   > [Your answer]
+   > The Processes tab (tree view) is generally easier for human visual understanding because it renders the hierarchy directly as an expandable, indented tree structure, making parent-child ownership obvious at a glance. However, the Details tab (PID/PPID columns) is more precise and reliable for technical verification because it displays the exact numeric process IDs without application grouping or UI abstraction.
 
 ---
 
