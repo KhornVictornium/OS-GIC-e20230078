@@ -1,0 +1,282 @@
+/
+total 2738252
+drwxr-xr-x  20 root root       4096 Oct  7 04:21 .
+drwxr-xr-x  20 root root       4096 Oct  7 04:21 ..
+lrwxrwxrwx   1 root root          7 Apr 20  2026 bin -> usr/bin
+drwxr-xr-x   4 root root       4096 Oct  7 06:29 boot
+dr-xr-xr-x   2 root root       4096 Aug 26 05:03 cdrom
+drwxr-xr-x  20 root root       4120 Oct 23 05:24 dev
+drwxr-xr-x 125 root root       4096 Oct 21 06:43 etc
+drwxr-xr-x   3 root root       4096 Oct  7 04:22 home
+lrwxrwxrwx   1 root root          7 Apr 20  2026 lib -> usr/lib
+lrwxrwxrwx   1 root root          9 Apr 20  2026 lib64 -> usr/lib64
+drwx------   2 root root      16384 Oct  7 04:17 lost+found
+drwxr-xr-x   2 root root       4096 Aug 26 04:45 media
+drwxr-xr-x   2 root root       4096 Aug 26 04:45 mnt
+drwxr-xr-x   3 root root       4096 Oct 21 05:27 opt
+dr-xr-xr-x 240 root root          0 Oct 23 05:24 proc
+drwx------   5 root root       4096 Oct  7 09:40 root
+drwxr-xr-x  38 root root       1040 Oct 23 05:34 run
+lrwxrwxrwx   1 root root          8 Apr 20  2026 sbin -> usr/sbin
+drwxr-xr-x   6 root root       4096 Aug 26 04:47 snap
+drwxr-xr-x   2 root root       4096 Aug 26 04:45 srv
+-rw-------   1 root root 2803892224 Oct  7 04:21 swap.img
+dr-xr-xr-x  13 root root          0 Oct 23 05:24 sys
+drwxrwxrwt  13 root root        260 Oct 23 06:11 tmp
+drwxr-xr-x  12 root root       4096 Aug 26 04:45 usr
+drwxr-xr-x  14 root root       4096 Oct  7 09:34 var
+--- /etc ---
+/etc
+ModemManager
+NetworkManager
+PackageKit
+UPower
+X11
+adduser.conf
+alternatives
+apache2
+apparmor
+apparmor.d
+apport
+apt
+bash.bashrc
+bash_completion
+bash_completion.d
+bindresvport.blacklist
+binfmt.d
+ca-certificates
+ca-certificates.conf
+ca-certificates.conf.dpkg-old
+chatscripts
+chrony
+cloud
+cockpit
+console-setup
+cracklib
+credstore
+credstore.encrypted
+cron.d
+cron.daily
+cron.hourly
+cron.monthly
+cron.weekly
+cron.yearly
+crontab
+crypttab
+dbus-1
+debconf.conf
+debian_version
+debuginfod
+default
+deluser.conf
+depmod.d
+dhcp
+dhcpcd.conf
+dpkg
+dracut.conf
+dracut.conf.d
+e2scrub.conf
+environment
+ethertypes
+fdclone
+fish
+fonts
+fstab
+fuse.conf
+fwupd
+gai.conf
+gnutls
+gprofng.rc
+groff
+group
+group-
+grub.d
+gshadow
+gshadow-
+gss
+hdparm.conf
+host.conf
+hostname
+hosts
+hosts.allow
+hosts.deny
+ifplugd
+init.d
+initramfs-tools
+inputrc
+iscsi
+issue
+issue.d
+issue.net
+kdump
+kernel
+landscape
+ld.so.cache
+ld.so.conf
+ld.so.conf.d
+ldap
+legal
+libaudit.conf
+libblockdev
+libibverbs.d
+libnl-3
+lighttpd
+locale.conf
+locale.gen
+localtime
+logcheck
+login.defs
+logrotate.conf
+logrotate.d
+lsb-release
+lvm
+lynx
+machine-id
+magic
+magic.mime
+mailcap
+mailcap.order
+manpath.config
+mdadm
+mime.types
+mke2fs.conf
+modprobe.d
+modules
+modules-load.d
+motd.d
+mtab
+multipath
+multipath.conf
+nanorc
+needrestart
+netconfig
+netplan
+network
+networkd-dispatcher
+networks
+newt
+nftables.conf
+nginx
+nsswitch.conf
+opt
+os-release
+overlayroot.conf
+pam.conf
+pam.d
+passwd
+passwd-
+perl
+pki
+plymouth
+pm
+polkit-1
+ppp
+profile
+profile.d
+protocols
+python3
+python3.14
+rc0.d
+rc1.d
+rc2.d
+rc3.d
+rc4.d
+rc5.d
+rc6.d
+rcS.d
+resolv.conf
+rmt
+rpc
+rsyslog.conf
+rsyslog.d
+screenrc
+security
+selinux
+sensors.d
+sensors3.conf
+services
+sgml
+shadow
+shadow-
+shells
+skel
+sos
+ssh
+ssl
+subgid
+subgid-
+subuid
+subuid-
+sudo.conf
+sudo_logsrvd.conf
+sudoers
+sudoers.d
+supercat
+sysctl.d
+sysstat
+systemd
+terminfo
+thermald
+tmpfiles.d
+tpm2-tss
+ubuntu-advantage
+ucf.conf
+udev
+udisks2
+ufw
+update-manager
+update-motd.d
+update-notifier
+usb_modeswitch.conf
+usb_modeswitch.d
+vconsole.conf
+vim
+vmware-tools
+vtrgb
+vulkan
+wgetrc
+wpa_supplicant
+xattr.conf
+xdg
+xml
+zsh_command_not_found
+--- /var ---
+/var
+backups
+cache
+crash
+lib
+local
+lock
+log
+mail
+opt
+run
+snap
+spool
+tmp
+www
+--- /home ---
+/home
+total 12
+drwxr-xr-x  3 root   root   4096 Oct  7 04:22 .
+drwxr-xr-x 20 root   root   4096 Oct  7 04:21 ..
+drwxr-x--- 11 victor victor 4096 Oct 23 06:12 victor
+--- /tmp ---
+/tmp
+total 4
+drwxrwxrwt 13 root root  260 Oct 23 06:11 .
+drwxr-xr-x 20 root root 4096 Oct  7 04:21 ..
+drwxrwxrwt  2 root root   40 Oct 23 05:24 .ICE-unix
+drwxrwxrwt  2 root root   40 Oct 23 05:24 .X11-unix
+drwxrwxrwt  2 root root   40 Oct 23 05:24 .XIM-unix
+drwxrwxrwt  2 root root   40 Oct 23 05:24 .font-unix
+drwx------  2 root root   40 Oct 23 05:24 snap-private-tmp
+drwx------  3 root root   60 Oct 23 05:24 systemd-private-55631c5327ed4718a8d322fe4108cb36-ModemManager.service-BH6ih6
+drwx------  3 root root   60 Oct 23 05:24 systemd-private-55631c5327ed4718a8d322fe4108cb36-chrony.service-EcGH4P
+drwx------  3 root root   60 Oct 23 05:24 systemd-private-55631c5327ed4718a8d322fe4108cb36-polkit.service-zzPhnz
+drwx------  3 root root   60 Oct 23 05:24 systemd-private-55631c5327ed4718a8d322fe4108cb36-systemd-logind.service-AOgmHU
+drwx------  3 root root   60 Oct 23 05:34 systemd-private-55631c5327ed4718a8d322fe4108cb36-upower.service-g7So5A
+drwx------  2 root root   40 Oct 23 05:24 vmware-root_1177-4013723261
+--- Home (~) ---
+/home/victor

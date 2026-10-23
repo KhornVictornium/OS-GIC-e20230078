@@ -1,0 +1,52 @@
+/home/victor
+total 116
+drwxr-x--- 11 victor victor  4096 Oct 23 06:12 .
+drwxr-xr-x  3 root   root    4096 Oct  7 04:22 ..
+-rw-------  1 victor victor  5419 Oct 21 06:47 .bash_history
+-rw-r--r--  1 victor victor   220 Feb 13  2026 .bash_logout
+-rw-r--r--  1 victor victor  5975 Oct 22 12:19 .bashrc
+-rw-r--r--  1 victor victor 16384 Oct 21 04:02 .bashrc.swo
+-rw-r--r--  1 victor victor 16384 Oct 21 04:02 .bashrc.swp
+drwx------  8 victor victor  4096 Oct 22 12:18 .cache
+drwxrwxr-x  4 victor victor  4096 Oct 21 05:42 .cargo
+drwxrwxr-x  9 victor victor  4096 Oct 22 13:13 .config
+-rw-rw-r--  1 victor victor    32 Oct 21 03:45 .gitconfig
+-rw-rw-r--  1 victor victor   197 Oct 21 06:54 .inputrc
+-rw-------  1 victor victor    20 Oct 21 06:44 .lesshst
+drwxrwxr-x  5 victor victor  4096 Oct 21 06:43 .local
+drwxrwxr-x  5 victor victor  4096 Oct  7 09:57 .npm
+-rw-r--r--  1 victor victor   890 Oct 22 12:19 .profile
+-rw-rw-r--  1 victor victor     0 Oct  7 09:51 .python_history
+drwxrwxr-x  6 victor victor  4096 Oct 21 05:40 .rustup
+drwx------  2 victor victor  4096 Oct 21 03:46 .ssh
+-rw-------  1 victor victor   787 Oct 21 05:13 .viminfo
+drwxrwxr-x  2 victor victor  4096 Oct  7 09:31 Desktop
+drwxrwxr-x  5 victor victor  4096 Oct 22 12:17 OS-GIC-e20230078
+-rw-rw-r--  1 victor victor     0 Oct 23 06:12 os-se-
+--- Root directory (/) ---
+/
+bin
+boot
+cdrom
+dev
+etc
+home
+lib
+lib64
+lost+found
+media
+mnt
+opt
+proc
+root
+run
+sbin
+snap
+srv
+swap.img
+sys
+tmp
+usr
+var
+--- Back to home ---
+/home/victor
