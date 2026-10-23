@@ -129,23 +129,23 @@ Screenshot of compiling and running `shm-producer` and `shm-consumer`:
 
 1. **What does `shm_open()` do? How is it different from `open()`?**
 
-   > [Your answer]
+   > shm_open() creates or opens a POSIX shared memory object and returns a file descriptor that can be used to access it. It is specifically designed for shared memory communication between processes. In contrast, open() is commonly used to open regular files and other filesystem objects. Both functions return file descriptors, but shm_open() accesses a named shared memory object rather than an ordinary file.
 
 2. **What does `mmap()` do? Why is shared memory faster than other IPC methods?**
 
-   > [Your answer]
+   > mmap() maps a file or shared memory object into a process's virtual address space. With MAP_SHARED, multiple processes can access the same underlying memory region. Shared memory can be faster than pipes or message queues because processes can exchange data directly through the shared region without repeatedly copying the message through a kernel-managed communication channel. However, processes may need synchronization when accessing shared data concurrently.
 
 3. **Why must the shared memory name match between producer and consumer?**
 
-   > [Your answer]
+   > The shared memory name identifies the shared memory object. Both processes must use the same name to access the same object. If the names differ, the consumer cannot find the producer's shared memory object and shm_open() may fail with an error such as ENOENT (No such file or directory).
 
 4. **What does `shm_unlink()` do? What would happen if the consumer didn't call it?**
 
-   > [Your answer]
+   > shm_unlink() removes the name of a POSIX shared memory object. If no process still has it open, the object can be destroyed and its resources released. If the consumer does not call shm_unlink(), the object may remain available under its name after both programs finish, consuming system resources until it is unlinked. A later producer run using O_CREAT can reopen the existing object.
 
 5. **If the consumer runs before the producer, what happens? Try it and describe the error.**
 
-   > [Your answer]
+   > When the consumer runs before the producer and the shared memory object does not exist, shm_open() fails because the consumer opens the object with O_RDONLY instead of O_CREAT. The program displays an error similar to shm_open: No such file or directory and prints a hint to run the producer first. Running the producer first creates the shared memory object and writes the message, allowing the consumer to read it successfully.
 
 ---
 
