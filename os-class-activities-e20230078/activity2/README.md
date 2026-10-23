@@ -167,23 +167,23 @@ Screenshot of compiling and running `sender` and `receiver`:
 
 1. **How is a message queue different from shared memory? When would you use one over the other?**
 
-   > [Your answer]
+   > A message queue allows processes to exchange data by sending and receiving separate messages. Shared memory allows multiple processes to access the same memory region directly. Message queues are useful when processes need structured messages and automatic message delivery and ordering. Shared memory is often better for transferring large amounts of data efficiently, but processes may need synchronization mechanisms to avoid conflicts when accessing the same data.
 
 2. **Why does the queue name in `common.h` need to start with `/`?**
 
-   > [Your answer]
+   > POSIX message queue names must begin with a forward slash (/) and must not contain additional slashes under the POSIX naming convention. For example, /queue-khorn-victor is a valid queue name. Both the sender and receiver use the same name to access the same message queue.
 
 3. **What does `mq_unlink()` do? What happens if neither the sender nor receiver calls it?**
 
-   > [Your answer]
+   > mq_unlink() removes the name of a POSIX message queue. The queue is destroyed and its resources can be released when it has been unlinked and no processes still have it open. If neither process calls mq_unlink(), the queue can remain available after the programs exit, along with any messages that remain in it. The queue may continue consuming system resources until it is unlinked.
 
 4. **What happens if you run the receiver before the sender?**
 
-   > [Your answer]
+   > If the queue does not exist, the receiver's call to mq_open() fails because it opens the queue without the O_CREAT flag. The program displays an error such as mq_open: No such file or directory and suggests running the sender first. If the queue already exists from an earlier run, the receiver may open it successfully instead.
 
 5. **Can multiple senders send to the same queue? Can multiple receivers read from the same queue?**
 
-   > [Your answer]
+   > Yes. Multiple senders can open the same message queue and send messages to it. Multiple receivers can also open the same queue and receive messages. Each successful receive removes one message from the queue, so receivers generally compete for available messages rather than each receiving a copy of every message. Applications may need additional coordination if they require a particular processing order or message distribution strategy.
 
 ---
 
@@ -191,4 +191,4 @@ Screenshot of compiling and running `sender` and `receiver`:
 
 What did you learn from this activity? What was the most interesting difference between Linux and Windows process creation? Which IPC method do you prefer and why?
 
-> [Write your reflection here]
+> This activity provided valuable hands-on experience with process lifecycle management and the core mechanisms operating systems use to enable communication across isolated address spaces. The most striking difference between platforms is their architectural approach to process creation: Linux decouples creation from loading through the two-step fork() and exec() model, offering great flexibility between steps, whereas Windows consolidates initialization into a single, highly structured CreateProcess() call that relies heavily on explicit kernel object handles. When comparing inter-process communication mechanisms, I prefer message queues for general application development because the kernel manages synchronization, ordering, and discrete message boundaries natively. Shared memory remains unmatched for raw speed and zero-copy performance with large datasets, but the simplicity and safety of kernel-handled message queues make them far easier and less error-prone to work with.
