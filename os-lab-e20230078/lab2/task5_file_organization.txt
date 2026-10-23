@@ -1,26 +1,94 @@
+=== Task 5: File Organization ===
+--- Moved server_notice.txt to devops/ ---
+Dockerfile
+docker-compose.yml
+handbook.txt
+pipeline.txt
+security_audit.txt
+server_notice.txt
+--- Moved logo_brief.txt to marketing/assets/ ---
+banner.jpg
+brochure.pdf
+logo.png
+logo_brief.txt
+--- Removed temp_debug.log from policies/ ---
+leave_policy.txt
+remote_work.txt
+--- Moved handbook.txt to hr/onboarding/ ---
+checklist.txt
+handbook.txt
+welcome_guide.txt
+--- Copied leave_policy.txt to onboarding/ ---
+checklist.txt
+handbook.txt
+leave_policy.txt
+welcome_guide.txt
+--- Renamed q1_launch.txt to q1_2026_launch.txt ---
+q1_2026_launch.txt
+social_media.txt
+--- Final Structure ---
+techcorp
+├── engineering
+│   ├── backend
+│   │   ├── app.js
+│   │   ├── database.sql
+│   │   ├── pipeline_backup.txt
+│   │   ├── server_config.txt
+│   │   └── task4_navigation_paths.txt
+│   ├── devops
+│   │   ├── docker-compose.yml
+│   │   ├── Dockerfile
+│   │   ├── pipeline.txt
+│   │   ├── security_audit.txt
+│   │   └── server_notice.txt
+│   └── frontend
+│       ├── frontend_config.txt
+│       ├── index.html
+│       └── styles.css
+├── hr
+│   ├── onboarding
+│   │   ├── checklist.txt
+│   │   ├── handbook.txt
+│   │   ├── leave_policy.txt
+│   │   └── welcome_guide.txt
+│   └── policies
+│       ├── leave_policy.txt
+│       └── remote_work.txt
+└── marketing
+    ├── assets
+    │   ├── banner.jpg
+    │   ├── brochure.pdf
+    │   ├── logo_brief.txt
+    │   └── logo.png
+    └── campaigns
+        ├── q1_2026_launch.txt
+        └── social_media.txt
+
+11 directories, 25 files
 --- Challenge File Organization ---
 --- 9a: Contents of devops/ ---
-total 16
-drwxrwxr-x 2 victor victor 4096 Oct 23 06:29 .
+total 20
+drwxrwxr-x 2 victor victor 4096 Oct 23 06:40 .
 drwxrwxr-x 5 victor victor 4096 Oct 23 06:21 ..
 -rw-rw-r-- 1 victor victor    0 Oct 23 06:21 Dockerfile
 -rw-rw-r-- 1 victor victor    0 Oct 23 06:21 docker-compose.yml
 -rw-rw-r-- 1 victor victor   29 Oct 23 06:21 pipeline.txt
--rw-rw-r-- 1 victor victor   34 Oct 23 06:29 security_audit.txt
+-rw-rw-r-- 1 victor victor   34 Oct 23 06:40 security_audit.txt
+-rw-rw-r-- 1 victor victor   48 Oct 23 06:38 server_notice.txt
 --- 9b: Contents of backend/ ---
 total 20
-drwxrwxr-x 2 victor victor 4096 Oct 23 06:29 .
+drwxrwxr-x 2 victor victor 4096 Oct 23 06:38 .
 drwxrwxr-x 5 victor victor 4096 Oct 23 06:21 ..
 -rw-rw-r-- 1 victor victor    0 Oct 23 06:21 app.js
 -rw-rw-r-- 1 victor victor    0 Oct 23 06:21 database.sql
--rw-rw-r-- 1 victor victor   29 Oct 23 06:29 pipeline_backup.txt
+-rw-rw-r-- 1 victor victor   29 Oct 23 06:40 pipeline_backup.txt
 -rw-rw-r-- 1 victor victor   29 Oct 23 06:21 server_config.txt
 -rw-rw-r-- 1 victor victor   81 Oct 23 06:24 task4_navigation_paths.txt
 --- 9c: Contents of campaigns/ after cleanup ---
 total 16
-drwxrwxr-x 2 victor victor 4096 Oct 23 06:29 .
-drwxrwxr-x 4 victor victor 4096 Oct 23 06:21 ..
--rw-rw-r-- 1 victor victor   32 Oct 23 06:21 q1_launch.txt
+drwxrwxr-x 2 victor victor 4096 Oct 23 06:40 .
+drwxrwxr-x 4 victor victor 4096 Oct 23 06:38 ..
+-rw-rw-r-- 1 victor victor   32 Oct 23 06:21 q1_2026_launch.txt
 -rw-rw-r-- 1 victor victor   35 Oct 23 06:21 social_media.txt
 --- 9d: Contents of frontend/ ---
 total 12
@@ -42,7 +110,8 @@ techcorp
 │   │   ├── docker-compose.yml
 │   │   ├── Dockerfile
 │   │   ├── pipeline.txt
-│   │   └── security_audit.txt
+│   │   ├── security_audit.txt
+│   │   └── server_notice.txt
 │   └── frontend
 │       ├── frontend_config.txt
 │       ├── index.html
@@ -50,6 +119,8 @@ techcorp
 ├── hr
 │   ├── onboarding
 │   │   ├── checklist.txt
+│   │   ├── handbook.txt
+│   │   ├── leave_policy.txt
 │   │   └── welcome_guide.txt
 │   └── policies
 │       ├── leave_policy.txt
@@ -58,61 +129,10 @@ techcorp
     ├── assets
     │   ├── banner.jpg
     │   ├── brochure.pdf
+    │   ├── logo_brief.txt
     │   └── logo.png
     └── campaigns
-        ├── q1_launch.txt
+        ├── q1_2026_launch.txt
         └── social_media.txt
 
-11 directories, 21 files
-techcorp:
-engineering
-hr
-marketing
-
-techcorp/engineering:
-backend
-devops
-frontend
-
-techcorp/engineering/backend:
-app.js
-database.sql
-pipeline_backup.txt
-server_config.txt
-task4_navigation_paths.txt
-
-techcorp/engineering/devops:
-Dockerfile
-docker-compose.yml
-pipeline.txt
-security_audit.txt
-
-techcorp/engineering/frontend:
-frontend_config.txt
-index.html
-styles.css
-
-techcorp/hr:
-onboarding
-policies
-
-techcorp/hr/onboarding:
-checklist.txt
-welcome_guide.txt
-
-techcorp/hr/policies:
-leave_policy.txt
-remote_work.txt
-
-techcorp/marketing:
-assets
-campaigns
-
-techcorp/marketing/assets:
-banner.jpg
-brochure.pdf
-logo.png
-
-techcorp/marketing/campaigns:
-q1_launch.txt
-social_media.txt
+11 directories, 25 files

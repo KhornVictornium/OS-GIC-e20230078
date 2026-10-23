@@ -1,0 +1,260 @@
+=== Task 6: Advanced Listing & Directory Audit ===
+--- Recursive Listing (ls -R) ---
+techcorp:
+engineering
+hr
+marketing
+
+techcorp/engineering:
+backend
+devops
+frontend
+
+techcorp/engineering/backend:
+app.js
+database.sql
+pipeline_backup.txt
+server_config.txt
+task4_navigation_paths.txt
+
+techcorp/engineering/devops:
+Dockerfile
+docker-compose.yml
+pipeline.txt
+security_audit.txt
+server_notice.txt
+
+techcorp/engineering/frontend:
+frontend_config.txt
+index.html
+styles.css
+
+techcorp/hr:
+onboarding
+policies
+
+techcorp/hr/onboarding:
+checklist.txt
+handbook.txt
+leave_policy.txt
+welcome_guide.txt
+
+techcorp/hr/policies:
+leave_policy.txt
+remote_work.txt
+
+techcorp/marketing:
+assets
+campaigns
+
+techcorp/marketing/assets:
+banner.jpg
+brochure.pdf
+logo.png
+logo_brief.txt
+
+techcorp/marketing/campaigns:
+q1_2026_launch.txt
+social_media.txt
+
+--- Sort by Size: engineering/ (ls -lS) ---
+total 4
+-rw-rw-r-- 1 victor victor 26 Oct 23 06:21 frontend_config.txt
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 styles.css
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 index.html
+total 12
+-rw-rw-r-- 1 victor victor 81 Oct 23 06:24 task4_navigation_paths.txt
+-rw-rw-r-- 1 victor victor 29 Oct 23 06:40 pipeline_backup.txt
+-rw-rw-r-- 1 victor victor 29 Oct 23 06:21 server_config.txt
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 database.sql
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 app.js
+total 12
+-rw-rw-r-- 1 victor victor 48 Oct 23 06:38 server_notice.txt
+-rw-rw-r-- 1 victor victor 34 Oct 23 06:40 security_audit.txt
+-rw-rw-r-- 1 victor victor 29 Oct 23 06:21 pipeline.txt
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 docker-compose.yml
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 Dockerfile
+
+--- Sort by Time: techcorp/ (ls -lt) ---
+total 8
+-rw-rw-r-- 1 victor victor 39 Oct 23 06:21 leave_policy.txt
+-rw-rw-r-- 1 victor victor 32 Oct 23 06:21 remote_work.txt
+total 12
+-rw-rw-r-- 1 victor victor 39 Oct 23 06:38 leave_policy.txt
+-rw-rw-r-- 1 victor victor 23 Oct 23 06:38 handbook.txt
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 checklist.txt
+-rw-rw-r-- 1 victor victor 52 Oct 23 06:21 welcome_guide.txt
+total 8
+-rw-rw-r-- 1 victor victor 35 Oct 23 06:21 social_media.txt
+-rw-rw-r-- 1 victor victor 32 Oct 23 06:21 q1_2026_launch.txt
+
+--- Human-Readable (ls -lh) ---
+total 4.0K
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 banner.jpg
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 brochure.pdf
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 logo.png
+-rw-rw-r-- 1 victor victor 22 Oct 23 06:38 logo_brief.txt
+total 12K
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 Dockerfile
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 docker-compose.yml
+-rw-rw-r-- 1 victor victor 29 Oct 23 06:21 pipeline.txt
+-rw-rw-r-- 1 victor victor 34 Oct 23 06:40 security_audit.txt
+-rw-rw-r-- 1 victor victor 48 Oct 23 06:38 server_notice.txt
+
+--- Reverse Sort by Size (ls -rlS) ---
+total 12
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 app.js
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 database.sql
+-rw-rw-r-- 1 victor victor 29 Oct 23 06:21 server_config.txt
+-rw-rw-r-- 1 victor victor 29 Oct 23 06:40 pipeline_backup.txt
+-rw-rw-r-- 1 victor victor 81 Oct 23 06:24 task4_navigation_paths.txt
+
+--- Reverse Sort by Time (ls -rlt) ---
+total 12
+-rw-rw-r-- 1 victor victor 52 Oct 23 06:21 welcome_guide.txt
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 checklist.txt
+-rw-rw-r-- 1 victor victor 23 Oct 23 06:38 handbook.txt
+-rw-rw-r-- 1 victor victor 39 Oct 23 06:38 leave_policy.txt
+
+--- Combined: Recursive + Human-Readable + Sort by Size (ls -lhRS) ---
+techcorp/:
+total 12K
+drwxrwxr-x 4 victor victor 4.0K Oct 23 06:38 marketing
+drwxrwxr-x 4 victor victor 4.0K Oct 23 06:21 hr
+drwxrwxr-x 5 victor victor 4.0K Oct 23 06:21 engineering
+
+techcorp/marketing:
+total 8.0K
+drwxrwxr-x 2 victor victor 4.0K Oct 23 06:40 campaigns
+drwxrwxr-x 2 victor victor 4.0K Oct 23 06:38 assets
+
+techcorp/marketing/campaigns:
+total 8.0K
+-rw-rw-r-- 1 victor victor 35 Oct 23 06:21 social_media.txt
+-rw-rw-r-- 1 victor victor 32 Oct 23 06:21 q1_2026_launch.txt
+
+techcorp/marketing/assets:
+total 4.0K
+-rw-rw-r-- 1 victor victor 22 Oct 23 06:38 logo_brief.txt
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 banner.jpg
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 brochure.pdf
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 logo.png
+
+techcorp/hr:
+total 8.0K
+drwxrwxr-x 2 victor victor 4.0K Oct 23 06:40 policies
+drwxrwxr-x 2 victor victor 4.0K Oct 23 06:38 onboarding
+
+techcorp/hr/policies:
+total 8.0K
+-rw-rw-r-- 1 victor victor 39 Oct 23 06:21 leave_policy.txt
+-rw-rw-r-- 1 victor victor 32 Oct 23 06:21 remote_work.txt
+
+techcorp/hr/onboarding:
+total 12K
+-rw-rw-r-- 1 victor victor 52 Oct 23 06:21 welcome_guide.txt
+-rw-rw-r-- 1 victor victor 39 Oct 23 06:38 leave_policy.txt
+-rw-rw-r-- 1 victor victor 23 Oct 23 06:38 handbook.txt
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 checklist.txt
+
+techcorp/engineering:
+total 12K
+drwxrwxr-x 2 victor victor 4.0K Oct 23 06:29 frontend
+drwxrwxr-x 2 victor victor 4.0K Oct 23 06:38 backend
+drwxrwxr-x 2 victor victor 4.0K Oct 23 06:40 devops
+
+techcorp/engineering/frontend:
+total 4.0K
+-rw-rw-r-- 1 victor victor 26 Oct 23 06:21 frontend_config.txt
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 styles.css
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 index.html
+
+techcorp/engineering/backend:
+total 12K
+-rw-rw-r-- 1 victor victor 81 Oct 23 06:24 task4_navigation_paths.txt
+-rw-rw-r-- 1 victor victor 29 Oct 23 06:40 pipeline_backup.txt
+-rw-rw-r-- 1 victor victor 29 Oct 23 06:21 server_config.txt
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 database.sql
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 app.js
+
+techcorp/engineering/devops:
+total 12K
+-rw-rw-r-- 1 victor victor 48 Oct 23 06:38 server_notice.txt
+-rw-rw-r-- 1 victor victor 34 Oct 23 06:40 security_audit.txt
+-rw-rw-r-- 1 victor victor 29 Oct 23 06:21 pipeline.txt
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 docker-compose.yml
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 Dockerfile
+
+--- Challenge Investigation ---
+
+--- 6a: Onboarding, Newest First (ls -lt) ---
+total 12
+-rw-rw-r-- 1 victor victor 39 Oct 23 06:38 leave_policy.txt
+-rw-rw-r-- 1 victor victor 23 Oct 23 06:38 handbook.txt
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 checklist.txt
+-rw-rw-r-- 1 victor victor 52 Oct 23 06:21 welcome_guide.txt
+
+--- 6b: Marketing Recursive Human-Readable Listing (ls -lhR) ---
+techcorp/marketing/:
+total 8.0K
+drwxrwxr-x 2 victor victor 4.0K Oct 23 06:38 assets
+drwxrwxr-x 2 victor victor 4.0K Oct 23 06:40 campaigns
+
+techcorp/marketing/assets:
+total 4.0K
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 banner.jpg
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 brochure.pdf
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 logo.png
+-rw-rw-r-- 1 victor victor 22 Oct 23 06:38 logo_brief.txt
+
+techcorp/marketing/campaigns:
+total 8.0K
+-rw-rw-r-- 1 victor victor 32 Oct 23 06:21 q1_2026_launch.txt
+-rw-rw-r-- 1 victor victor 35 Oct 23 06:21 social_media.txt
+
+--- 6c: DevOps Smallest First (ls -rlS) ---
+total 12
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 Dockerfile
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 docker-compose.yml
+-rw-rw-r-- 1 victor victor 29 Oct 23 06:21 pipeline.txt
+-rw-rw-r-- 1 victor victor 34 Oct 23 06:40 security_audit.txt
+-rw-rw-r-- 1 victor victor 48 Oct 23 06:38 server_notice.txt
+
+--- 6d: Home Hidden Files, Largest First (ls -lhSd) ---
+
+--- Challenge Investigation ---
+
+--- 6a: Onboarding, Newest First (ls -lt) ---
+total 12
+-rw-rw-r-- 1 victor victor 39 Oct 23 06:38 leave_policy.txt
+-rw-rw-r-- 1 victor victor 23 Oct 23 06:38 handbook.txt
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 checklist.txt
+-rw-rw-r-- 1 victor victor 52 Oct 23 06:21 welcome_guide.txt
+
+--- 6b: Marketing Recursive Human-Readable Listing (ls -lhR) ---
+techcorp/marketing/:
+total 8.0K
+drwxrwxr-x 2 victor victor 4.0K Oct 23 06:38 assets
+drwxrwxr-x 2 victor victor 4.0K Oct 23 06:40 campaigns
+
+techcorp/marketing/assets:
+total 4.0K
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 banner.jpg
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 brochure.pdf
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 logo.png
+-rw-rw-r-- 1 victor victor 22 Oct 23 06:38 logo_brief.txt
+
+techcorp/marketing/campaigns:
+total 8.0K
+-rw-rw-r-- 1 victor victor 32 Oct 23 06:21 q1_2026_launch.txt
+-rw-rw-r-- 1 victor victor 35 Oct 23 06:21 social_media.txt
+
+--- 6c: DevOps Smallest First (ls -rlS) ---
+total 12
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 Dockerfile
+-rw-rw-r-- 1 victor victor  0 Oct 23 06:21 docker-compose.yml
+-rw-rw-r-- 1 victor victor 29 Oct 23 06:21 pipeline.txt
+-rw-rw-r-- 1 victor victor 34 Oct 23 06:40 security_audit.txt
+-rw-rw-r-- 1 victor victor 48 Oct 23 06:38 server_notice.txt
+
+--- 6d: Home Hidden Files, Largest First (ls -lhSd) ---

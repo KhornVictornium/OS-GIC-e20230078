@@ -29,3 +29,14 @@ social_media.txt
 /home/victor/OS-GIC-e20230078/os-lab-e20230078/lab2/techcorp/hr/onboarding
 checklist.txt
 welcome_guide.txt
+--- Challenge Navigation ---
+/home/victor/OS-GIC-e20230078/os-lab-e20230078/lab2/techcorp/engineering/backend
+/home/victor/OS-GIC-e20230078/os-lab-e20230078/lab2/techcorp/engineering/backend
+/usr/bin
+/home/victor/OS-GIC-e20230078/os-lab-e20230078/lab2/techcorp/engineering/backend
+/home/victor/OS-GIC-e20230078/os-lab-e20230078/lab2/techcorp/hr/onboarding
+total 12
+drwxrwxr-x 2 victor victor 4096 Oct 23 06:21 .
+drwxrwxr-x 4 victor victor 4096 Oct 23 06:21 ..
+-rw-rw-r-- 1 victor victor    0 Oct 23 06:21 checklist.txt
+-rw-rw-r-- 1 victor victor   52 Oct 23 06:21 welcome_guide.txt
