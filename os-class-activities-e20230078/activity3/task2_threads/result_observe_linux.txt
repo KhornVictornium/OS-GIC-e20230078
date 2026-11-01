@@ -1,0 +1,23 @@
+victor     11082    1930   11082  0    5 07:38 pts/0    00:00:00 ./threads_observe
+victor     11082    1930   11084  0    5 07:38 pts/0    00:00:00 ./threads_observe
+victor     11082    1930   11085  0    5 07:38 pts/0    00:00:00 ./threads_observe
+victor     11082    1930   11086  0    5 07:38 pts/0    00:00:00 ./threads_observe
+victor     11082    1930   11087  0    5 07:38 pts/0    00:00:00 ./threads_observe
+    PID    SPID TTY          TIME CMD
+    PID    SPID TTY          TIME CMD
+  11082   11082 pts/0    00:00:00 threads_observe
+  11082   11084 pts/0    00:00:00 threads_observe
+  11082   11085 pts/0    00:00:00 threads_observe
+  11082   11086 pts/0    00:00:00 threads_observe
+  11082   11087 pts/0    00:00:00 threads_observe
+--- /proc/12345/task/ listing ---
+Thread count:
+0
+--- /proc/11293/task/ listing ---
+11489
+11491
+11492
+11493
+11494
+Thread count:
+5
