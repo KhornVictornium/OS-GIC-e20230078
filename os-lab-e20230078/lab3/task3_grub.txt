@@ -1,0 +1,86 @@
+=== Task 3: GRUB Bootloader Exploration ===
+--- Current kernel version ---
+7.0.0-38-generic
+
+--- GRUB directory listing ---
+total 2404
+drwxr-xr-x 5 root root    4096 Oct  7 06:29 .
+drwxr-xr-x 4 root root    4096 Oct  7 06:29 ..
+drwxr-xr-x 2 root root    4096 Oct  7 04:22 fonts
+-rw-r--r-- 1 root root     712 Aug 26 04:47 gfxblacklist.txt
+-rw------- 1 root root    7757 Oct  7 06:29 grub.cfg
+-rw-r--r-- 1 root root    1024 Nov  1 09:45 grubenv
+drwxr-xr-x 2 root root   12288 Oct  7 04:22 i386-pc
+drwxr-xr-x 2 root root    4096 Oct  7 04:22 locale
+-rw-r--r-- 1 root root 2413171 Oct  7 04:22 unicode.pf2
+
+--- GRUB configuration: first 60 lines ---
+head: cannot open '/boot/grub/grub.cfg' for reading: Permission denied
+
+--- GRUB defaults ---
+# If you change this file or any /etc/default/grub.d/*.cfg file,
+# run 'update-grub' afterwards to update /boot/grub/grub.cfg.
+# For full documentation of the options in these files, see:
+#   info -f grub -n 'Simple configuration'
+
+GRUB_DEFAULT=0
+GRUB_TIMEOUT_STYLE=hidden
+GRUB_TIMEOUT=0
+GRUB_DISTRIBUTOR=`( . /etc/os-release && echo ${NAME} )`
+GRUB_CMDLINE_LINUX_DEFAULT=""
+GRUB_CMDLINE_LINUX=""
+
+# If your computer has multiple operating systems installed, then you
+# probably want to run os-prober. However, if your computer is a host
+# for guest OSes installed via LVM or raw disk devices, running
+# os-prober can cause damage to those guest OSes as it mounts
+# filesystems to look for things.
+#GRUB_DISABLE_OS_PROBER=false
+
+# Uncomment to enable BadRAM filtering, modify to suit your needs
+# This works with Linux (no patch required) and with any kernel that obtains
+# the memory map information from GRUB (GNU Mach, kernel of FreeBSD ...)
+#GRUB_BADRAM="0x01234567,0xfefefefe,0x89abcdef,0xefefefef"
+
+# Uncomment to disable graphical terminal
+#GRUB_TERMINAL=console
+
+# The resolution used on graphical terminal
+# note that you can use only modes which your graphic card supports via VBE/GOP/UGA
+# you can see them in real GRUB with the command `videoinfo'
+#GRUB_GFXMODE=640x480
+
+# Uncomment if you don't want GRUB to pass "root=UUID=xxx" parameter to Linux
+#GRUB_DISABLE_LINUX_UUID=true
+
+# Uncomment to disable generation of recovery mode menu entries
+#GRUB_DISABLE_RECOVERY="true"
+
+# Uncomment to get a beep at grub start
+#GRUB_INIT_TUNE="480 440 1"
+
+--- Installed kernels ---
+lrwxrwxrwx 1 root root  24 Oct  7 04:21 /boot/vmlinuz -> vmlinuz-7.0.0-38-generic
+-rw------- 1 root root 17M Sep  4 07:54 /boot/vmlinuz-7.0.0-38-generic
+lrwxrwxrwx 1 root root  24 Oct  7 06:29 /boot/vmlinuz.old -> vmlinuz-7.0.0-38-generic
+lrwxrwxrwx 1 root root  27 Oct  7 04:21 /boot/initrd.img -> initrd.img-7.0.0-38-generic
+-rw------- 1 root root 65M Oct  7 04:25 /boot/initrd.img-7.0.0-38-generic
+lrwxrwxrwx 1 root root  27 Oct  7 06:29 /boot/initrd.img.old -> initrd.img-7.0.0-38-generic
+
+--- Early kernel boot messages ---
+
+--- GRUB scripts ---
+total 152
+drwxr-xr-x   2 root root  4096 Aug 26 05:01 .
+drwxr-xr-x 130 root root 12288 Nov  1 07:14 ..
+-rwxr-xr-x   1 root root 11534 Jul  1 09:30 00_header
+-rwxr-xr-x   1 root root  6295 Mar  6  2026 05_debian_theme
+-rwxr-xr-x   1 root root 17611 Jul  1 09:30 10_linux
+-rwxr-xr-x   1 root root 42690 Jul  1 09:30 10_linux_zfs
+-rwxr-xr-x   1 root root 14430 Jul  1 09:30 20_linux_xen
+-rwxr-xr-x   1 root root 13619 Jul  1 09:30 30_os-prober
+-rwxr-xr-x   1 root root  1174 Jul  1 09:30 30_uefi-firmware
+-rwxr-xr-x   1 root root   744 Jun 18 14:01 35_fwupd
+-rwxr-xr-x   1 root root   214 Jul  1 09:30 40_custom
+-rwxr-xr-x   1 root root   215 Jul  1 09:30 41_custom
+-rw-r--r--   1 root root   483 Jul  1 09:30 README
