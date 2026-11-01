@@ -92,7 +92,13 @@
 
 ### Linux — `ps -eLf` Output
 
-_(Paste the relevant ps output here)_
+```bash
+victor     10940    1930   10940  0    5 07:37 pts/0    00:00:00 ./threads_observe
+victor     10940    1930   10942  0    5 07:37 pts/0    00:00:00 ./threads_observe
+victor     10940    1930   10943  0    5 07:37 pts/0    00:00:00 ./threads_observe
+victor     10940    1930   10944  0    5 07:37 pts/0    00:00:00 ./threads_observe
+victor     10940    1930   10945  0    5 07:37 pts/0    00:00:00 ./threads_observe
+```
 
 ### Linux — htop Thread View
 
@@ -105,19 +111,19 @@ _(Paste the relevant ps output here)_
 ### Answers
 
 1. **LWP column meaning:**
-   > _Your answer_
+   > In the output of ps -eLf, the LWP column stands for Lightweight Process, which represents the unique thread identifier assigned directly by the Linux kernel scheduler. Under Linux's Native POSIX Thread Library (NPTL) 1:1 threading model, every user-space thread corresponds to an independent kernel task struct with its own distinct scheduling identity. While all threads inside the program share identical Process IDs (PID) and Thread Group IDs (TGID), the kernel distinguishes each thread using its individual LWP value. For the primary thread of execution, the LWP is numerically identical to the process PID, whereas each newly spawned child worker thread receives a unique LWP number while maintaining the same parent PID.
 
 2. **/proc/PID/task/ count:**
-   > _Your answer_
+   > Listing the directory /proc/<PID>/task/ reveals exactly 5 entries, with each subdirectory named after the kernel TID (or LWP) of a specific thread. This total perfectly matches the active thread count of the program: 1 main thread (which initially launched main() and subsequently blocked in pthread_join()) plus the 4 worker threads actively sleeping inside the worker() routine. Because the Linux virtual /proc filesystem presents the kernel's exact internal view of a process's thread group, running ls /proc/<PID>/task/ | wc -l reflects every live thread running within that process group.
 
 3. **Extra Java threads:**
-   > _Your answer_
+   > Although ThreadDemo.java explicitly creates only three application worker threads (alongside the main execution thread), Windows Task Manager typically reports 15 to 30+ threads running under java.exe. This occurs because the Java Virtual Machine (JVM) is a complex runtime environment that automatically initializes and manages numerous background internal system threads to support core runtime operations. Running jstack <PID> reveals that these extra threads include the Garbage Collection threads (GC Thread#), the Just-In-Time dynamic compilers (C1 CompilerThread, C2 CompilerThread), the memory management engine (Finalizer and Reference Handler), system signaling monitors (Signal Dispatcher), service thread notification monitors (Service Thread), and connection tools (Common-Cleaner).
 
 4. **Linux vs Windows thread viewing:**
-   > _Your answer_
+   > Linux provides substantially deeper, more granular insight into individual threads compared to the default Windows Task Manager. In Windows Task Manager, threads are treated primarily as a single aggregate integer counter per process (e.g., showing that java.exe has 24 threads), with no direct visibility into individual thread IDs, execution states, or CPU allocation without resorting to advanced Sysinternals tools like Process Explorer. In contrast, Linux surfaces threads as first-class scheduling entities: utilities like ps -T or ps -eLf expose individual LWPs, processor core affinities, priority values, and execution states, while the /proc/<PID>/task/<TID>/ hierarchy provides deep introspection into thread-specific file descriptors, registers, memory maps, system call states, and context switch metrics.
 
 ---
 
 ## Reflection
 
-> _What did you find most interesting about socket communication and threading? How does understanding threads at the OS level help you write better concurrent programs?_
+> What I found most interesting about socket communication and multithreading is how cleanly software abstractions peel back to reveal low-level kernel mechanics: in networking, seeing a single port coordinate real-time data while a subtle mismatch like host versus network byte order or an unstarted server halts everything; in threading, observing how a single statement like shared_counter++ instantly breaks into an erratic race condition the moment hardware register operations interleave. Understanding threads at the OS level transforms how I write concurrent code because it demystifies thread scheduling and execution cost. Recognizing that every thread maps to a kernel-managed Lightweight Process (LWP) with its own stack and context-switching overhead makes it clear why naive thread creation causes resource exhaustion, why bounded thread pools like ExecutorService are necessary, and why atomicity cannot be assumed at the language level. Ultimately, viewing threads through OS primitives and tools like /proc and ps shifts concurrent programming from guesswork to deliberate architecture, enabling me to properly guard critical sections, avoid deadlocks, and diagnose synchronization bottlenecks directly at their root.
