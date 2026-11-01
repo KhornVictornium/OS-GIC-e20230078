@@ -66,25 +66,25 @@
 
 ### RunnableDemo Output
 
-_(Include output or screenshot)_
+![RunnableDemo](screenshots/task3_runnable_output.png)
 
 ### PoolDemo Output
 
-_(Include output or screenshot)_
+![PoolDemo](screenshots/task3_pooldemo_output.png)
 
 ### Answers
 
 1. **Thread vs Runnable:**
-   > _Your answer_
+   > The core architectural difference stems from Java’s single-inheritance model: extending the Thread class ties your class directly to the thread hierarchy and permanently exhausts your single inheritance slot, preventing you from subclassing any other domain class. Implementing the Runnable interface cleanly decouples the executable unit of work from the actual execution mechanism, allowing your class to inherit from a business base class and cleanly implement additional interfaces. You should prefer implementing Runnable in virtually all modern production scenarios because it fosters separation of concerns, enables code reuse, and integrates seamlessly with thread pooling architectures like ExecutorService. Extending Thread is typically only justified if you are specifically creating a specialized thread implementation that overrides core lifecycle methods of Thread itself.
 
 2. **Pool size limiting concurrency:**
-   > _Your answer_
+   > In PoolDemo, the thread pool is instantiated using Executors.newFixedThreadPool(2), which pre-allocates an executor backed by a fixed worker pool of exactly two operating threads and an unbounded internal FIFO blocking queue (LinkedBlockingQueue). When all six tasks are submitted in a rapid loop via pool.submit(), the pool assigns the first two tasks directly to its two available worker threads, which immediately begin executing their respective 1-second sleeps. Because both worker threads are now fully occupied, the remaining four tasks are placed into the blocking queue where they safely wait; as soon as a worker finishes its active task, it pulls the next queued task from the buffer, enforcing a strict concurrency throttle of at most two actively executing tasks at any given moment.
 
 3. **thread.join() in Java:**
-   > _Your answer_
+   > Calling thread.join() instructs the currently running thread (the main thread) to suspend its execution and transition into a waiting state until the specific target thread finishes executing its run() method and terminates. In ThreadDemo.java, calling t1.join(), t2.join(), and t3.join() guarantees that the counter loops in Alpha, Beta, and Gamma finish their 500ms sleep iterations before main resumes. If you remove the join() calls, the main thread will not block; it will immediately print "Main thread: all threads finished." right after calling .start(), while the background worker threads are still in the early stages of counting, causing out-of-order console output and potentially premature program winding down.
 
 4. **ExecutorService advantages:**
-   > _Your answer_
+   > Calling thread.join() instructs the currently running thread (the main thread) to suspend its execution and transition into a waiting state until the specific target thread finishes executing its run() method and terminates. In ThreadDemo.java, calling t1.join(), t2.join(), and t3.join() guarantees that the counter loops in Alpha, Beta, and Gamma finish their 500ms sleep iterations before main resumes. If you remove the join() calls, the main thread will not block; it will immediately print "Main thread: all threads finished." right after calling .start(), while the background worker threads are still in the early stages of counting, causing out-of-order console output and potentially premature program winding down.
 
 ---
 
