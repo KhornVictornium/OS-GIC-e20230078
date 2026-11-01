@@ -11,12 +11,12 @@
 
 During the lab, each task redirected its output into `.txt` files. These files are your primary proof of work for the **guided portions** of each task. Make sure all of the following files are present in your `lab3/` folder:
 
-- [ ] `task1_wildcards.txt`
-- [ ] `task2_links.txt`
-- [ ] `task3_grub.txt`
-- [ ] `task4_shared_objects.txt`
-- [ ] `task5_shared_library.txt`
-- [ ] `task_history.txt`
+- [x] `task1_wildcards.txt`
+- [x] `task2_links.txt`
+- [x] `task3_grub.txt`
+- [x] `task4_shared_objects.txt`
+- [x] `task5_shared_library.txt`
+- [x] `task_history.txt`
 
 ---
 
