@@ -40,21 +40,21 @@
 
 ### Output — With Mutex (Correct)
 
-_(Include in the same screenshot or a separate one)_
+![Threads output with mutex](screenshots/task2_threads_output_mutex.png)
 
 ### Answers
 
 1. **What is a race condition?**
-   > _Your answer_
+   > A race condition occurs in concurrent programming when multiple execution threads access and mutate shared data concurrently, and the final outcome depends unpredictably on the order and timing of thread scheduling. In threads.c, the operation shared_counter++ looks like a single line of C code, but at the assembly and hardware level it is non-atomic and consists of three distinct instructions: reading the current value of shared_counter from memory into a CPU register, incrementing the value inside the register, and writing the updated register value back out to memory. When multiple threads execute this sequence without synchronization, thread context switches occur mid-operation; one thread can read a stale counter value before another thread finishes writing its update, causing overlapping increments to overwrite each other and leaving the final count lower than the expected 400,000.
 
 2. **What does `pthread_mutex_lock()` do?**
-   > _Your answer_
+   > The pthread_mutex_lock() function attempts to acquire an exclusive lock on a mutual exclusion primitive (mutex); if another thread already holds the lock, the calling thread blocks and is placed in a sleep state by the OS scheduler until the mutex is released via pthread_mutex_unlock(). This guarantees mutual exclusion around the critical section where shared_counter++ executes, ensuring that exactly one thread at a time can perform the read-modify-write cycle. Because no other worker thread can interleave its execution or read intermediate values while the mutex is held, the increment behaves as an atomic operation, preserving every iteration and producing the correct final result of 400,000.
 
 3. **Removing `pthread_join()`:**
-   > _Your answer_
+   > The pthread_join() function suspends the execution of the calling thread (in this case, the main thread) until the target thread terminates, functioning as a synchronization barrier. If you omit pthread_join(), the main thread immediately proceeds past thread creation to print the counter results and reaches return 0 in main(). Returning from main() invokes exit(), which instantly terminates the entire process and kills all running child worker threads regardless of whether they have finished their loops. As a result, the program prints premature, erratic counter values (often near 0 or only a fraction of the total work), threads terminate halfway through, and their resources are not cleanly synchronized.
 
 4. **Thread vs Process:**
-   > _Your answer_
+   > A process is an independent execution unit that possesses its own dedicated, isolated virtual address space and operating system resources, whereas a thread is a lightweight unit of execution that exists within a process. Threads belonging to the same process share the virtual address space—including the global data section (such as shared_counter), heap memory, compiled code/text segment, open file descriptors, and OS signals—which makes communication extremely fast but prone to race conditions. In contrast, each individual thread maintains its own private execution context consisting of a unique thread ID (TID), a separate call stack (which holds local variables and function frames), a dedicated program counter (PC), and a private set of CPU registers.
 
 ---
 
