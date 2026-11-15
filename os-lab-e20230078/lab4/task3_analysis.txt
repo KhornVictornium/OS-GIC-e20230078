@@ -1,0 +1,104 @@
+=== Task 3: Data Analysis ===
+--- All GET requests ---
+192.168.1.10 - - [01/Jan/2025:10:15:32] "GET /index.html" 200 1024
+192.168.1.10 - - [01/Jan/2025:10:17:45] "GET /dashboard" 200 2048
+10.0.0.5 - - [01/Jan/2025:10:18:22] "GET /api/data" 200 4096
+10.0.0.5 - - [01/Jan/2025:10:20:03] "GET /api/users" 403 256
+192.168.1.30 - - [01/Jan/2025:10:21:55] "GET /index.html" 200 1024
+10.0.0.5 - - [01/Jan/2025:10:23:18] "GET /api/data" 200 4096
+192.168.1.20 - - [01/Jan/2025:10:24:02] "GET /dashboard" 200 2048
+--- All requests from 192.168.1.10 ---
+192.168.1.10 - - [01/Jan/2025:10:15:32] "GET /index.html" 200 1024
+192.168.1.10 - - [01/Jan/2025:10:17:45] "GET /dashboard" 200 2048
+192.168.1.10 - - [01/Jan/2025:10:22:40] "DELETE /api/data" 405 128
+--- All non-200 status codes (failed requests) ---
+192.168.1.20 - - [01/Jan/2025:10:16:01] "POST /login" 401 512
+10.0.0.5 - - [01/Jan/2025:10:20:03] "GET /api/users" 403 256
+192.168.1.10 - - [01/Jan/2025:10:22:40] "DELETE /api/data" 405 128
+--- Count of POST requests ---
+2
+--- Lines with error codes (4xx) ---
+192.168.1.20 - - [01/Jan/2025:10:16:01] "POST /login" 401 512
+10.0.0.5 - - [01/Jan/2025:10:20:03] "GET /api/users" 403 256
+192.168.1.10 - - [01/Jan/2025:10:22:40] "DELETE /api/data" 405 128
+--- Usernames from /etc/passwd (field 1) ---
+root
+daemon
+bin
+sys
+sync
+games
+man
+lp
+mail
+news
+--- IP addresses from access log ---
+192.168.1.10
+192.168.1.20
+192.168.1.10
+10.0.0.5
+192.168.1.20
+10.0.0.5
+192.168.1.30
+192.168.1.10
+10.0.0.5
+192.168.1.20
+--- User shells from /etc/passwd (fields 1 and 7) ---
+root:/bin/bash
+daemon:/usr/sbin/nologin
+bin:/usr/sbin/nologin
+sys:/usr/sbin/nologin
+sync:/bin/sync
+games:/usr/sbin/nologin
+man:/usr/sbin/nologin
+lp:/usr/sbin/nologin
+mail:/usr/sbin/nologin
+news:/usr/sbin/nologin
+--- IP and status code with awk ---
+192.168.1.10 
+192.168.1.20 
+192.168.1.10 
+10.0.0.5 
+192.168.1.20 
+10.0.0.5 
+192.168.1.30 
+192.168.1.10 
+10.0.0.5 
+192.168.1.20 
+--- Total bytes transferred ---
+Total bytes: 0
+--- Requests per IP ---
+      3 192.168.1.20
+      3 192.168.1.10
+      3 10.0.0.5
+      1 192.168.1.30
+--- Top requested URLs ---
+      7 200
+      1 405
+      1 403
+      1 401
+--- Unique IP addresses ---
+10.0.0.5
+192.168.1.10
+192.168.1.20
+192.168.1.30
+--- Status code summary ---
+     10 
+--- Users with /bin/bash shell ---
+root
+victor
+tester
+--- Number of system users (UID < 1000) ---
+System users: 32
+--- Number of regular users (UID >= 1000) ---
+Regular users: 3
+--- Challenge Data Analysis ---
+--- 3a: IP and URL for 403 Forbidden requests ---
+10.0.0.5 403
+--- 3b: User count per shell ---
+     30 /usr/sbin/nologin
+      3 /bin/bash
+      1 /bin/sync
+      1 /bin/false
+--- 3c: Top requesting IP address ---
+      3 192.168.1.20

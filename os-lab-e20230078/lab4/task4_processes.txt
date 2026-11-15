@@ -1,0 +1,61 @@
+=== Task 4: Process Management ===
+--- Current processes (your user) ---
+    PID TTY          TIME CMD
+   1986 ?        00:00:00 systemd
+   1990 ?        00:00:00 (sd-pam)
+   2012 tty1     00:00:00 bash
+   2202 ?        00:00:09 sshd-session
+   2203 pts/0    00:00:01 bash
+  13504 pts/0    00:00:00 ps
+--- All processes (snapshot) ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.1  0.4  25204 16664 ?        Ss   07:00   0:04 /usr/lib/systemd/systemd --switched-root --system --deserialize=51
+root           2  0.0  0.0      0     0 ?        S    07:00   0:00 [kthreadd]
+root           3  0.0  0.0      0     0 ?        S    07:00   0:00 [pool_workqueue_release]
+root           4  0.0  0.0      0     0 ?        I<   07:00   0:00 [kworker/R-rcu_gp]
+root           5  0.0  0.0      0     0 ?        I<   07:00   0:00 [kworker/R-sync_wq]
+root           6  0.0  0.0      0     0 ?        I<   07:00   0:00 [kworker/R-kvfree_rcu_reclaim]
+root           7  0.0  0.0      0     0 ?        I<   07:00   0:00 [kworker/R-slub_flushwq]
+root           8  0.0  0.0      0     0 ?        I<   07:00   0:00 [kworker/R-netns]
+root          10  0.0  0.0      0     0 ?        I<   07:00   0:00 [kworker/0:0H-kblockd]
+root          12  0.0  0.0      0     0 ?        I    07:00   0:00 [kworker/u512:0-ipv6_addrconf]
+root          13  0.0  0.0      0     0 ?        I<   07:00   0:00 [kworker/R-mm_percpu_wq]
+root          14  0.0  0.0      0     0 ?        S    07:00   0:00 [ksoftirqd/0]
+root          15  0.0  0.0      0     0 ?        I    07:00   0:00 [rcu_preempt]
+root          16  0.0  0.0      0     0 ?        S    07:00   0:00 [rcu_exp_par_gp_kthread_worker/1]
+root          17  0.0  0.0      0     0 ?        S    07:00   0:00 [rcu_exp_gp_kthread_worker]
+root          18  0.0  0.0      0     0 ?        S    07:00   0:00 [migration/0]
+root          19  0.0  0.0      0     0 ?        S    07:00   0:00 [kprobe-optimizer]
+root          20  0.0  0.0      0     0 ?        S    07:00   0:00 [idle_inject/0]
+root          21  0.0  0.0      0     0 ?        S    07:00   0:00 [cpuhp/0]
+--- Process tree ---
+UID          PID    PPID  C STIME TTY          TIME CMD
+root           2       0  0 07:00 ?        00:00:00 [kthreadd]
+root           3       2  0 07:00 ?        00:00:00  \_ [pool_workqueue_release]
+root           4       2  0 07:00 ?        00:00:00  \_ [kworker/R-rcu_gp]
+root           5       2  0 07:00 ?        00:00:00  \_ [kworker/R-sync_wq]
+root           6       2  0 07:00 ?        00:00:00  \_ [kworker/R-kvfree_rcu_reclaim]
+root           7       2  0 07:00 ?        00:00:00  \_ [kworker/R-slub_flushwq]
+root           8       2  0 07:00 ?        00:00:00  \_ [kworker/R-netns]
+root          10       2  0 07:00 ?        00:00:00  \_ [kworker/0:0H-kblockd]
+root          12       2  0 07:00 ?        00:00:00  \_ [kworker/u512:0-ipv6_addrconf]
+root          13       2  0 07:00 ?        00:00:00  \_ [kworker/R-mm_percpu_wq]
+root          14       2  0 07:00 ?        00:00:00  \_ [ksoftirqd/0]
+root          15       2  0 07:00 ?        00:00:00  \_ [rcu_preempt]
+root          16       2  0 07:00 ?        00:00:00  \_ [rcu_exp_par_gp_kthread_worker/1]
+root          17       2  0 07:00 ?        00:00:00  \_ [rcu_exp_gp_kthread_worker]
+root          18       2  0 07:00 ?        00:00:00  \_ [migration/0]
+root          19       2  0 07:00 ?        00:00:00  \_ [kprobe-optimizer]
+root          20       2  0 07:00 ?        00:00:00  \_ [idle_inject/0]
+root          21       2  0 07:00 ?        00:00:00  \_ [cpuhp/0]
+root          22       2  0 07:00 ?        00:00:00  \_ [cpuhp/1]
+root          23       2  0 07:00 ?        00:00:00  \_ [idle_inject/1]
+root          24       2  0 07:00 ?        00:00:00  \_ [migration/1]
+root          25       2  0 07:00 ?        00:00:00  \_ [ksoftirqd/1]
+root          30       2  0 07:00 ?        00:00:00  \_ [kdevtmpfs]
+root          31       2  0 07:00 ?        00:00:00  \_ [kworker/R-inet_frag_wq]
+root          32       2  0 07:00 ?        00:00:00  \_ [rcu_tasks_kthread]
+root          33       2  0 07:00 ?        00:00:00  \_ [rcu_tasks_rude_kthread]
+root          34       2  0 07:00 ?        00:00:00  \_ [kauditd]
+root          35       2  0 07:00 ?        00:00:00  \_ [khungtaskd]
+root          36       2  0 07:00 ?        00:00:00  \_ [oom_reaper]

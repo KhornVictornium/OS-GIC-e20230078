@@ -1,0 +1,20 @@
+total 1060
+drwxr-xr-x 130 root root      12288 Nov 12 18:38 .
+drwxr-xr-x  20 root root       4096 Oct  7 04:21 ..
+drwxr-xr-x   3 root root       4096 Nov  1 07:14 .java
+-rw-------   1 root root          0 Aug 26 04:45 .pwd.lock
+-rw-r--r--   1 root root        862 Aug 26 04:45 .resolv.conf.systemd-resolved.bak
+-rw-r--r--   1 root root        255 Aug 26 04:45 .updated
+drwxr-xr-x   5 root root       4096 Aug 26 05:01 ModemManager
+drwxr-xr-x   8 root root       4096 Oct  7 05:27 NetworkManager
+drwxr-xr-x   2 root root       4096 Aug 26 04:47 PackageKit
+drwxr-xr-x   3 root root       4096 Aug 26 04:47 UPower
+drwxr-xr-x   8 root root       4096 Oct  7 09:56 X11
+-rw-r--r--   1 root root       4027 Nov  4  2025 adduser.conf
+drwxr-xr-x   2 root root       4096 Nov  1 07:14 alternatives
+drwxr-xr-x   3 root root       4096 Oct  7 09:56 apache2
+drwxr-xr-x   2 root root       4096 Aug 26 04:46 apparmor
+drwxr-xr-x   9 root root       4096 Oct  7 05:27 apparmor.d
+drwxr-xr-x   3 root root       4096 Aug 26 04:47 apport
+drwxr-xr-x   9 root root       4096 Oct  7 04:22 apt
+-rw-r--r--   1 root root       2553 Feb 13  2026 bash.bashrc

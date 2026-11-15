@@ -1,0 +1,47 @@
+=== Task 2: Pipelines & Filters ===
+--- Number of entries in /etc ---
+217
+--- Sorted unique names ---
+apple
+banana
+cherry
+zebra
+--- Count of each name ---
+      3 apple
+      2 banana
+      1 zebra
+      1 cherry
+--- First 5 users in /etc/passwd ---
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+--- Last 3 users in /etc/passwd ---
+sshd:x:983:65534:sshd user:/run/sshd:/usr/sbin/nologin
+dnsmasq:x:999:65534:dnsmasq:/var/lib/misc:/usr/sbin/nologin
+tester:x:1001:1001:Tom Tester,2,0317001616,:/home/tester:/bin/bash
+--- Top 5 largest directories under /usr ---
+2.9G	/usr/lib
+609M	/usr/share
+317M	/usr/bin
+171M	/usr/src
+128M	/usr/libexec
+--- Pipeline with tee ---
+20
+(also saved to etc_snapshot.txt)
+--- Uppercase to lowercase ---
+hello world from techcorp
+--- Remove duplicate spaces ---
+too many spaces here
+--- Challenge Pipelines ---
+--- 2a: Directory count in /etc ---
+130
+--- 2b: Last 5 sorted usernames ---
+usbmux
+uucp
+uuidd
+victor
+www-data
+--- 2c: Count of .conf files under /etc ---
+164
