@@ -1,0 +1,19 @@
+=== Task 5: Orphan & Zombie Processes ===
+--- Orphan process observation ---
+Child PID: 18723, Original PPID: 18722, New PPID after parent exit: 18723
+--- Zombie process observation ---
+Zombie PID: 19531, State: Z (zombie/defunct), Parent PID: 19530
+--- Zombie and Orphan Cleanup Notes ---
+Q: How are orphans cleaned up? A: When a parent exits early, init/systemd (PID 1) or a subreaper immediately adopts the orphan and calls wait() to reap its exit status once the orphan finishes.
+Q: How are zombies cleaned up? A: A zombie is reaped when its parent calls wait() or waitpid() to read its exit status—or if the parent terminates without waiting, PID 1 adopts the zombie and reaps it.
+Q: Can you kill a zombie with 'kill -9'? Why or why not? A: No. A zombie is already dead (terminated) and has no running code or memory left to receive signals; only its parent (or PID 1) can remove its process table entry via wait(), or you must kill the parent.
+--- Challenge Orphan & Zombie ---
+--- 5a: Reaping zombie with wait() ---
+During the initial 10s sleep, ps showed the child in state Z+ (<defunct>). Immediately after the parent called wait(), the child's entry disappeared completely from the process table while the parent was still running.
+--- 5b: Process tree with 3 children (ps --forest) ---
+UID          PID    PPID  C STIME TTY          TIME CMD
+victor     20569    2203  0 09:22 pts/0    00:00:00  |           \_ ./three_children
+victor     20570   20569  0 09:22 pts/0    00:00:00  |               \_ ./three_children
+victor     20571   20569  0 09:22 pts/0    00:00:00  |               \_ ./three_children
+victor     20572   20569  0 09:22 pts/0    00:00:00  |               \_ ./three_children
+victor     20601   18438  0 09:22 pts/1    00:00:00              \_ grep --color=auto -E PID|three_children
