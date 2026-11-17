@@ -59,3 +59,55 @@ root          33       2  0 07:00 ?        00:00:00  \_ [rcu_tasks_rude_kthread]
 root          34       2  0 07:00 ?        00:00:00  \_ [kauditd]
 root          35       2  0 07:00 ?        00:00:00  \_ [khungtaskd]
 root          36       2  0 07:00 ?        00:00:00  \_ [oom_reaper]
+--- Background jobs ---
+[1]- 15172 Running                    sleep 300 &
+[2]+ 15208 Running                    sleep 500 &
+--- After Ctrl+Z (stopped job) ---
+[3]+ 15375 Stopped                    sleep 600
+--- After bg (resumed in background) ---
+[1]  15172 Running                    sleep 300 &
+[2]- 15208 Running                    sleep 500 &
+[3]+ 15375 Running                    sleep 600 &
+--- After terminating all sleep jobs ---
+[3]+ 15375 Running                    sleep 600 &
+Started sleep with PID: 15906
+--- Available signals ---
+ 1) SIGHUP	 2) SIGINT	 3) SIGQUIT	 4) SIGILL	 5) SIGTRAP
+ 6) SIGABRT	 7) SIGBUS	 8) SIGFPE	 9) SIGKILL	10) SIGUSR1
+11) SIGSEGV	12) SIGUSR2	13) SIGPIPE	14) SIGALRM	15) SIGTERM
+16) SIGSTKFLT	17) SIGCHLD	18) SIGCONT	19) SIGSTOP	20) SIGTSTP
+21) SIGTTIN	22) SIGTTOU	23) SIGURG	24) SIGXCPU	25) SIGXFSZ
+26) SIGVTALRM	27) SIGPROF	28) SIGWINCH	29) SIGIO	30) SIGPWR
+31) SIGSYS	34) SIGRTMIN	35) SIGRTMIN+1	36) SIGRTMIN+2	37) SIGRTMIN+3
+38) SIGRTMIN+4	39) SIGRTMIN+5	40) SIGRTMIN+6	41) SIGRTMIN+7	42) SIGRTMIN+8
+43) SIGRTMIN+9	44) SIGRTMIN+10	45) SIGRTMIN+11	46) SIGRTMIN+12	47) SIGRTMIN+13
+48) SIGRTMIN+14	49) SIGRTMIN+15	50) SIGRTMAX-14	51) SIGRTMAX-13	52) SIGRTMAX-12
+53) SIGRTMAX-11	54) SIGRTMAX-10	55) SIGRTMAX-9	56) SIGRTMAX-8	57) SIGRTMAX-7
+58) SIGRTMAX-6	59) SIGRTMAX-5	60) SIGRTMAX-4	61) SIGRTMAX-3	62) SIGRTMAX-2
+63) SIGRTMAX-1	64) SIGRTMAX	
+--- After SIGSTOP ---
+    PID STAT CMD
+  15906 T    sleep 1000
+--- After SIGCONT ---
+    PID STAT CMD
+  15906 S    sleep 1000
+--- After SIGTERM ---
+    PID STAT CMD
+--- nohup demo ---
+nohup sleep PID: 16483
+-rw-rw-r-- 1 victor victor 0 Nov 15 08:30 nohup.out
+--- Challenge Process Management ---
+--- 4a: Three sleep processes (ps --forest) ---
+UID          PID    PPID  C STIME TTY          TIME CMD
+victor     15375    2203  0 08:26 pts/0    00:00:00  \_ sleep 600
+victor     16721    2203  0 08:31 pts/0    00:00:00  \_ sleep 100
+victor     16755    2203  0 08:31 pts/0    00:00:00  \_ sleep 200
+victor     16787    2203  0 08:31 pts/0    00:00:00  \_ sleep 300
+victor     16864    2203  0 08:32 pts/0    00:00:00  \_ grep --color=auto -E PID|sleep
+Terminated all sleep processes with pkill.
+--- 4b: Running bash PIDs (pgrep) ---
+2012 -bash
+2203 -bash
+--- 4c: Highest memory-consuming process ---
+    PID COMMAND         %MEM
+   1428 snapd            1.2
