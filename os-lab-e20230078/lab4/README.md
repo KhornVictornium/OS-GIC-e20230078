@@ -92,17 +92,19 @@ After finishing all tasks, run `history | tail -n 100` and take a screenshot.
 ## Answers to Task 5 Questions
 
 1. **How are orphans cleaned up?**
-   > _Your answer here_
+   > When a parent process exits while its child is still running, the child becomes an orphan. The Linux kernel immediately re-parents (adopts) the orphan process to `init`/`systemd` (PID 1) or the nearest ancestor registered as a subreaper (such as a `systemd --user` instance). The orphan continues executing normally until it finishes, at which point its new parent automatically calls `wait()`/`waitpid()` to collect its exit status and remove its entry from the process table.
 
 2. **How are zombies cleaned up?**
-   > _Your answer here_
+   > A zombie process (`Z` state / `<defunct>`) has finished executing and freed its memory and resources, leaving only a process table entry (holding its PID and exit status) for its parent to read. It is cleaned up (reaped) when the parent calls `wait()` or `waitpid()` (for example, inside a `SIGCHLD` handler or explicitly as demonstrated in `zombie_reaped.c`). If the parent exits without waiting, `init`/`systemd` (PID 1) or a subreaper adopts the zombie and calls `wait()` to remove it from the process table.
 
 3. **Can you kill a zombie with `kill -9`? Why or why not?**
-   > _Your answer here_
+   > No. `kill -9` sends `SIGKILL`, which terminates a running process, but a zombie is **already dead**—it has finished executing and no longer has running code or user-space memory (`VSZ = 0`, `RSS = 0`) to act on signals. Its process table entry remains solely so its parent can read its exit status. To clear a lingering zombie whose parent does not call `wait()`, you must prompt the parent to reap it or terminate the **parent process** (PPID) so PID 1 adopts and reaps the zombie.
 
 ---
 
 ## Reflection
 
-> _What was the most useful command/technique you learned in this lab? How would you use pipelines and redirection in a real server environment?_
+> The most useful technique I learned in this lab was chaining Linux pipelines (`|`) with text-processing filters like `grep`, `cut`, `awk`, `sort`, and `uniq -c`, alongside process inspection and control commands (`ps --forest`, `pgrep`, `pkill`, `kill`, and `nohup`). Together, they make it easy to turn raw logs and command output into clear summaries and manage background jobs reliably.
+>
+> In a real server environment, I would use **pipelines** to troubleshoot logs and system resources in real time—for instance, filtering web server logs (`access.log`) with `grep` for `4xx`/`5xx` errors, extracting client IPs or paths with `awk`, and ranking top offending IPs or endpoints with `sort | uniq -c | sort -rn | head`, or piping `ps` and `du` output through `sort` to pinpoint high-memory processes and large directories. I would use **I/O redirection** (`>`, `>>`, `2>`, `2>&1`, and `tee`) for background services, deployment scripts, and `cron` jobs to separate normal output (`stdout`) from error logs (`stderr`), preserve live + logged output with `tee -a`, and ensure unattended processes started with `nohup` retain all diagnostic output.
 
